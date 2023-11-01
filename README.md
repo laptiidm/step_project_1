@@ -22,9 +22,26 @@
 
 ![image](screenshots/mysql_metrics_db.png)
 
-* data collection is configured in the files: mysqld_exporter.cnf and /etc/systemd/system/mysql_exporter.service (detailed in prometheus_mysql_exporter-install.sh)
+* data collection is configured in the files: mysqld_exporter.cnf and /etc/systemd/system/mysql_exporter.service (detailed in __prometheus_mysql_exporter-install.sh__)
 
 ![image](screenshots/mysql_exporter.cnf.png)
+
+* further in the file __mysql_server-install.sh__ a database __"shop_db"__ is created as well as a user who collects metrics with the specific access rights
+
+![image](screenshots/shop_db_end_user.png)
+
+* configurations for collecting metrics from mysql_exporter are added into __prometheus.yml__ file
+
+![image](screenshots/job_prometheus_yml.png)
+
+![image](screenshots/mysql_shop_db_metric_example.png)
+
+![image](screenshots/node_exp_metrics_example.png)
+
+
+
+
+
 
 
 
