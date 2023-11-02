@@ -3,6 +3,8 @@
 * the role of the first machine is an supervisor
 * the "supervisor" is deployed with pre-installed: Grafana, Prometheus, Prometheus Alert manager
 
+![image](screenshots/targets.png)
+
 ![image](screenshots/grafana_status.png)
 
 ![image](screenshots/prometheus.png)
