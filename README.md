@@ -64,7 +64,7 @@ receivers:
     smarthost: smtp.gmail.com:587
     auth_username: 'laptii.dm@gmail.com'
     auth_identity: 'laptii.dm@gmail.com'
-    auth_password: 'jjpt tyca hybz ittw'
+    auth_password: 'pass pass pass pass'
 inhibit_rules:
   - source_match:
       severity: 'critical'
