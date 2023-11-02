@@ -44,7 +44,7 @@
 
 ![image](screenshots/mysql_metrics.png)
 
-* pre-installed Alertmanager is configured to send notifications by email
+* pre-installed Alertmanager is configured (`/etc/alertmanager/alertmanager.yml`) to send notifications by email 
 
 ```
 global:
@@ -72,6 +72,28 @@ inhibit_rules:
       severity: 'warning'
     equal: ['alertname', 'dev', 'instance']
 ```
+* in `/etc/prometheus/` the rule-file `node_load1.rules.yml`is created
+
+```
+groups:
+  - name: node_load1
+    rules:
+      - alert: HighCPULoad
+        expr: node_load1 > 0.3
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          description: 'High CPU load detected ({{ $value }})'
+
+```
+* after saving the configurations we receive a notification by email
+
+![image](screenshots/notific_email_alertmng.png)
+
+![image](screenshots/notific_web_alertmng.png)
+
+
 
 
 
