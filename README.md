@@ -22,15 +22,17 @@
 
 ![image](screenshots/mysql_metrics_db.png)
 
-* data collection is configured in the files: mysqld_exporter.cnf and /etc/systemd/system/mysql_exporter.service (detailed in __prometheus_mysql_exporter-install.sh__)
+* data collection is configured in the files: mysqld_exporter.cnf and /etc/systemd/system/mysql_exporter.service (detailed in `prometheus_mysql_exporter-install.sh`)
 
 ![image](screenshots/mysql_exporter.cnf.png)
 
-* further in the file __mysql_server-install.sh__ a database __"shop_db"__ is created as well as a user who collects metrics with the specific access rights
+* further in the file `mysql_server-install.sh` a database `"shop_db"` is created as well as a user who collects metrics with the specific access rights
 
 ![image](screenshots/shop_db_end_user.png)
 
-* configurations for collecting metrics from mysql_exporter are added into __prometheus.yml__ file
+## further settings are made manually >>
+
+* configurations for collecting metrics from mysql_exporter are added into `prometheus.yml` file
 
 ![image](screenshots/job_prometheus_yml.png)
 
@@ -92,6 +94,28 @@ groups:
 ![image](screenshots/notific_email_alertmng.png)
 
 ![image](screenshots/notific_web_alertmng.png)
+
+* adding Prometheus as a data source in Grafana     
+
+![image](screenshots/![image](screenshots/adding_data_source_grafana.png) 
+
+* dashboards
+
+![image](screenshots/general_dashb_subordinate_cpu_and_mysql.png)
+
+![image](screenshots/node_load1.png)
+
+![image](screenshots/node_load1_time_series.png)
+
+![image](screenshots/node_cpu_seconds_total.png)
+
+![image](screenshots/![image](screenshots/table_ratio.png)
+
+
+
+
+
+
 
 
 

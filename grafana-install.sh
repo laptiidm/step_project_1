@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Добавляем ключ GPG для репозитория Grafana
+# add ключ GPG key Grafana
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 
-# Добавляем репозиторий Grafana
+# add repo Grafana
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 
-# Обновляем список пакетов
+# update packet list
 sudo apt-get update -y
 
-# Устанавливаем Grafana
+# install Grafana
 sudo apt-get -y install grafana
 
-# Включаем и запускаем службу Grafana
+# run Grafana
 sudo systemctl enable grafana-server
 sleep 5
 sudo systemctl start grafana-server

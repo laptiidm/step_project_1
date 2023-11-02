@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# Обновляем пакеты
+# update packet list
 sudo apt-get update -y
 
-# Создаем системного пользователя Prometheus
+# system user prometheus
 sudo useradd --system --no-create-home --shell /bin/false prometheus
 
-# Загружаем и устанавливаем Prometheus
+# get and unarchive prometheus
 wget https://github.com/prometheus/prometheus/releases/download/v2.32.1/prometheus-2.32.1.linux-amd64.tar.gz
 tar -xvf prometheus-2.32.1.linux-amd64.tar.gz
 
-# Создаем необходимые директории
+# create directories
 sudo mkdir -p /data /etc/prometheus
 
-# Копируем бинарники и конфигурацию
+# copy binaries and kick out garbage
 cd prometheus-2.32.1.linux-amd64
 sudo mv prometheus promtool /usr/local/bin/
 sudo mv consoles/ console_libraries/ /etc/prometheus/
@@ -21,10 +21,10 @@ sudo mv prometheus.yml /etc/prometheus/prometheus.yml
 cd ~
 sudo rm -rf prometheus*
 
-# Устанавливаем правильные разрешения
+# ownership
 sudo chown -R prometheus:prometheus /etc/prometheus/ /data
 
-# Создаем systemd service файл
+# create service file
 sudo touch /etc/systemd/system/prometheus.service
 
 cat <<EOL > /etc/systemd/system/prometheus.service
@@ -54,7 +54,7 @@ ExecStart=/usr/local/bin/prometheus \
 WantedBy=multi-user.target
 EOL
 
-# Включаем и запускаем службу
+# run service
 sudo systemctl enable prometheus
 sleep 5
 sudo systemctl start prometheus

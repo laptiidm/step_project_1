@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Создаем системного пользователя Alertmanager
+# system user creating 
 sudo useradd --system --no-create-home --shell /bin/false alertmanager
 
-# Загружаем и устанавливаем Alertmanager
+# install alertmanager
 wget https://github.com/prometheus/alertmanager/releases/download/v0.26.0/alertmanager-0.26.0.linux-amd64.tar.gz
 tar -xvf alertmanager-0.26.0.linux-amd64.tar.gz
 
-# Создаем необходимые директории
+# create directories
 sudo mkdir -p /alertmanager-data /etc/alertmanager
 
-# Копируем бинарник и конфигурацию
+# copie binaries
 sudo mv alertmanager-0.26.0.linux-amd64/alertmanager /usr/local/bin/
 sudo mv alertmanager-0.26.0.linux-amd64/alertmanager.yml /etc/alertmanager/
 rm -rf alertmanager*
 
-# Создаем systemd service файл
+# create systemd service 
 sudo touch /etc/systemd/system/alertmanager.service
 
 cat <<EOL > /etc/systemd/system/alertmanager.service
@@ -41,7 +41,7 @@ ExecStart=/usr/local/bin/alertmanager \
 WantedBy=multi-user.target
 EOL
 
-# Включаем и запускаем службу
+# run our service
 sudo systemctl enable alertmanager
 sleep 5
 sudo systemctl start alertmanager
